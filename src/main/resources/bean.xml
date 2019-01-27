@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<!-- 通过Singleton创建一个实例客户bean -->
+	<bean id="customer1" class="com.honglin_chen.spring_bean_scope.Customer">
+		<property name="name" ref="single" />
+	</bean>
+	
+	<bean id="customer2" class="com.honglin_chen.spring_bean_scope.Customer">
+		<property name="name" ref="single" />
+	</bean>
+	
+	<!-- 将Name类bean封装成Singleton模式 -->
+	<bean id="single" class="com.honglin_chen.spring_bean_scope.Name" scope="singleton">
+		<property name="firstName" value="Michael" />
+		<property name="lastName" value="Chen" />
+	</bean>
+	
+	<!-- 通过Prototype创建一个实例客户bean -->
+	<bean id="customer3" class="com.honglin_chen.spring_bean_scope.Customer">
+		<property name="name" ref="proto" />
+	</bean>
+	
+	<bean id="customer4" class="com.honglin_chen.spring_bean_scope.Customer">
+		<property name="name" ref="proto" /> 
+	</bean>
+	
+	<!-- 将Name类bean封装成Prototype模式 -->
+	<bean id="proto" class="com.honglin_chen.spring_bean_scope.Name" scope="prototype">
+		<property name="firstName" value="Christopher" />
+		<property name="lastName" value="Chen" /> 
+	</bean>
+</beans>
